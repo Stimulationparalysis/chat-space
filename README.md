@@ -21,8 +21,9 @@
 |group_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_one :group, through: member
-- has_one :user, through: member
+- has_many :groups, through: members
+- has_many :users, through: members
+- has_many :members
 
 ## usersテーブル
 
@@ -44,5 +45,5 @@
 
 ### Association
 - has_many :users, through: members
-- has_one :message, through: member
+- has_many :messages
 - has_many :members
