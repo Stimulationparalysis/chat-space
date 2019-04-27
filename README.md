@@ -4,8 +4,8 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, references :user, foreign_key: true|
+|group_id|integer|null: false, references :group, foreign_key: true|
 
 ### Association
 - belongs_to :group
@@ -15,10 +15,10 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|body|string|null: false|
+|body|string|null: true|
 |image|text|null: true|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, references :member, foreign_key: true|
+|group_id|integer|null: false, references :member, foreign_key: true|
 
 ### Association
 - has_many :groups, through: members
@@ -30,7 +30,8 @@
 |------|----|-------|
 |name|string|index: true, null: false, unique: true|
 |email|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false|
+|group_id|integer|null: false, references :member, foreign_key: true|
 
 ### Association
 - has_many :groups, through: members
@@ -43,7 +44,8 @@
 |------|----|-------|
 |groupName|string|index: true, null: false, unique: true|
 |chatMember|string|null: false|
-|group_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false|
+|user_id|integer|null: false, references :member, foreign_key: true|
 
 ### Association
 - has_many :users, through: members
