@@ -21,8 +21,8 @@
 |group_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_many :groups, through: members
-- has_many :users, through: members
+- has_one :group, through: member
+- has_one :user, through: member
 
 ## usersテーブル
 
@@ -30,8 +30,6 @@
 |------|----|-------|
 |name|string|index: true, null: false, unique: true|
 |email|string|null: false|
-|user_id|integer|null: false|
-|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - has_many :groups, through: members
@@ -42,11 +40,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-|groupName|string|index: true, null: false, unique: true|
-|chatMember|string|null: false|
-|group_id|integer|null: false|
-|user_id|references|null: false, foreign_key: true|
+|name|string|index: true, null: false, unique: true|
 
 ### Association
 - has_many :users, through: members
+- has_one :message, through: member
 - has_many :members
