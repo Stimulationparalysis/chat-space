@@ -6,11 +6,13 @@
         kaz
       %ul.user-menu
         %li.user-menu__edit-user
-          =link_to "/groups/new" 
+          =link_to "/groups/new" do
+            %i.fa.fa-edit
         %li.user-menu__new-group 
-          =link_to "/users/366/edit"  
+          =link_to "/users/1/edit" do
+            %i.fa.fa-cog 
     %div.groups
-      = link_to "/groups/677/messages" do 
+      = link_to "/groups/1/messages" do 
         %div.group
           %p.group__group-name
             11
@@ -26,7 +28,7 @@
           Member：
           %li.member-list__member
             kaz
-      = link_to "/groups/677/edit" do
+      = link_to "/groups/1/edit" do
         %div.main-header__edit-btn
           Edit
     %div.messages
@@ -36,14 +38,14 @@
             kaz
           %p.upper-info__date
             2019/04/24(Wed) 00:09:34
-          %p.message__text
-            aaaa
+        %p.message__text
+          aaaa
 
     %div.form
-      %form.new-message#new_message{:action => "/groups/677/messages", :method => "post"}
+      %form.new-message#new_message{action: "/groups/1/messages", method: "post"}
         %div.input-box
           %input.input-box__text#message_content{:placeholder=>"type a message", :type=>"text", :name=>"message[content]"}
-            %label.upload-label{for: "upload-icon"} 
-              %i.fa.fa-picture-o
-                /=f.file_field :image, id: "upload-icon"
-                /=f.submit class: 'chat-group-form__action-btn', value: 'save'
+            %label.image-label
+              = fa_icon 'picture-o', class: 'icon'        
+              %input.hidden{type: "file"}
+        %input.new-message__submit-btn{type: "submit", value: "Send"}
