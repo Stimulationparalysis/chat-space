@@ -22,7 +22,7 @@
     display: flex;
     justify-content: space-between;
     border-bottom: solid 1px #eee;
-    .main-header__edit-btn {
+    &__edit-btn {
       height: 40px;
       line-height: 40px;
       padding: 0 20px;
@@ -73,24 +73,24 @@
   overflow: scroll;
   .message {
     padding-bottom: 40px;
-    .upper-info {
-      display: flex;
-      margin-bottom: 10px;
-      .upper-info__user {
-        color: $silverColor;
-        font-size: 16px;
-        font-weight: bold;
-      }
-      .upper-info__date {
-        color: $grayColor;
-        font-size: 12px;
-        margin-left: 10px;
-      }
-    .message__text {
+    &__text {
       color: $silverColor;
       font-size: 14px;
       margin-bottom: 10px;
     }
+    .upper-info {
+      display: flex;
+      margin-bottom: 10px;
+      &__user {
+        color: $silverColor;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__date {
+        color: $grayColor;
+        font-size: 12px;
+        margin-left: 10px;
+      }
     }
   }
 }
@@ -101,11 +101,11 @@
   padding: 20px 20px 0;
   .group {
     margin-bottom: 40px;
-    .group__group-name {
+    &__group-name {
       font-size: 15px;
       margin-bottom: 5px;
     }
-    .group__latest-message {
+    &__latest-message {
       font-size: 11px;
     }
   }
@@ -120,7 +120,7 @@
     .input-box {
       position: relative;
       width: 100%;
-      .input-box__text {
+      &__text {
         height: 50px;
         width: 100%;
         padding: 0 40px 0 10px;
