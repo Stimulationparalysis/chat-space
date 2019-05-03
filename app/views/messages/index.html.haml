@@ -6,13 +6,13 @@
         kaz
       %ul.user-menu
         %li.user-menu__edit-user
-          =link_to "/groups/new" do
+          =link_to new_group_registration_path(1) do
             %i.fa.fa-edit
         %li.user-menu__new-group 
-          =link_to "/users/1/edit" do
+          =link_to edit_user_registration_path(1) do
             %i.fa.fa-cog 
     .groups
-      = link_to "/groups/1/messages" do 
+      = link_to message_group_registration_path(1) do 
         .group
           %p.group__group-name
             11
@@ -28,7 +28,7 @@
           Member：
           %li.member-list__member
             kaz
-      = link_to "/groups/1/edit" do
+      = link_to edit_group_registration_path(1) do
         .main-header__edit-btn
           Edit
     .messages
@@ -42,7 +42,7 @@
           aaaa
 
     .form
-      %form.new-message#new_message{action: "/groups/1/messages", method: "post"}
+      %form.new-message#new_message{action: message_group_registration_path(1), method: "post"}
         .input-box
           %input.input-box__text#message_content{:placeholder=>"type a message", :type=>"text", :name=>"message[content]"}
             %label.image-label
