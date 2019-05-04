@@ -12,12 +12,13 @@
           =link_to "/users/1/edit" do
             %i.fa.fa-cog 
     .groups
-      = link_to "/users/1/edit" do 
+      - current_user.groups.each do |group|
         .group
-          %p.group__group-name
-            11
-          %p.group__latest-message
-            aaaa
+          = link_to group_messages_path(group) do
+            .group__name
+              = group.name
+            .group__message
+              メッセージはまだありません。
 
   .chat-main
     .main-header
