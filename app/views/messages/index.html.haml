@@ -33,14 +33,7 @@
         .main-header__edit-btn
           Edit
     .messages
-      .message
-        .upper-info
-          %p.upper-info__user
-            kaz
-          %p.upper-info__date
-            2019/04/24(Wed) 00:09:34
-        %p.message__text
-          aaaa
+      = render @messages
 
     .form
       = form_for [@group, @message] do |f|
