@@ -43,10 +43,10 @@
           aaaa
 
     .form
-      %form.new-message#new_message{action: "/users/1/edit", method: "post"}
+      = form_for [@group, @message] do |f|
         .input-box
-          %input.input-box__text#message_content{:placeholder=>"type a message", :type=>"text", :name=>"message[content]"}
-            %label.image-label
-              = fa_icon 'picture-o', class: 'icon'        
-              %input.hidden{type: "file"}
-        %input.new-message__submit-btn{type: "submit", value: "Send"}
+          = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
