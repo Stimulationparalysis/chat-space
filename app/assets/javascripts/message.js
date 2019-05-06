@@ -33,8 +33,8 @@ $(function(){
       processData: false,
       contentType: false
     })
-    .done(function(jbuilderData){
-      var html = buildMessageHTML(jbuilderData);
+    .done(function(jbuilderMessage){
+      var html = buildMessageHTML(jbuilderMessage);
       $('.messages').append(html)
       $this.get(0).reset();
       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
