@@ -9,7 +9,7 @@
           =link_to new_group_path do
             %i.fa.fa-edit
         %li.user-menu__new-group 
-          =link_to "/users/1/edit" do
+          =link_to edit_user_path(current_user) do
             %i.fa.fa-cog 
     .groups
       - current_user.groups.each do |group|
@@ -29,7 +29,7 @@
           Member：
           %li.member-list__member
             kaz
-      = link_to "/users/1/edit" do
+      = link_to edit_group_path(@group) do
         .main-header__edit-btn
           Edit
     .messages
