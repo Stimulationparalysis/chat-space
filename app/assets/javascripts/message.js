@@ -2,13 +2,13 @@ $(function(){
   function buildMessageHTML(message){
     var content = message.content ? `${ message.content }` : "";
     var img = message.image ? `<img src= ${ message.image }>` : "";
-    var html = `<div class='message'>
+    var html = `<div class = 'message' data-id=${message.id}>
                   <div class='upper-info'>
                     <p class='upper-info__user'>
                       ${message.user_name}
                     </p>
                     <p class='upper-info__date'>
-                      ${message.date}
+                      ${message.created_at}
                     </p>
                   </div>
                   <div class='meesage__text'>
@@ -41,7 +41,37 @@ $(function(){
     })
     .fail(function(){
       alert('error');
-    });
+    })
     return false
   });
+
+  $(function(){
+    if ($('.message')[0]){
+    setInterval(reloadMessages,5000);
+    }
+  })
+
+  var reloadMessages = function(){
+    last_message_id = $('.message').last().data('id');
+    var presentHTML = window.location.href
+    $.ajax({
+      url:  'api/messages',
+      type: 'GET',
+      data: {id: last_message_id},
+      dataType: 'json',
+    })
+    .done(function(messages) {
+      if (messages.length){
+        insertHTML = "";
+        $.each(messages, function(i, message){
+          insertHTML = buildMessageHTML(message);
+          $('.messages').append(insertHTML)
+          $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+       })
+     }
+   })
+   .fail(function() {
+     alert('自動更新に失敗しました');
+   })
+  }
 });
