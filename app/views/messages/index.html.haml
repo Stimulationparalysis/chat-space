@@ -3,7 +3,7 @@
   .chat-side
     .side-header
       %p.side-header__user-name
-        kaz
+        = current_user.name
       %ul.user-menu
         %li.user-menu__edit-user
           =link_to new_group_path do
@@ -24,11 +24,12 @@
     .main-header
       .current-group
         %h2.current-group__name
-          11
+          = @group.name
         %ul.member-list
           Member：
           %li.member-list__member
-            kaz
+            - @group.users.each do |user|
+              = user.name
       = link_to edit_group_path(@group) do
         .main-header__edit-btn
           Edit
