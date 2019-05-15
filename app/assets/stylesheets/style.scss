@@ -62,6 +62,9 @@
     font-weight: bold;
     .user-menu {
       display: flex;
+      .user-menu__new-group{
+        margin-left: 0.3rem;
+      }
     }
   }
 }
@@ -111,25 +114,7 @@
   }
 }
 
-.form {
-  height: 90px;
-  padding: 20px 40px;
-  background-color: #ddd;
-  .new-message {
-    display: flex;
-    .input-box {
-      position: relative;
-      width: 100%;
-      &__text {
-        height: 50px;
-        width: 100%;
-        padding: 0 40px 0 10px;
-        color: $silverColor;
-        border-style: none;
-      }
-    }
-  }
-}
+
 
 .form {
   height: 90px;
